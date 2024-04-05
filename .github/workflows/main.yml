@@ -1,0 +1,21 @@
+name: CI Stage
+
+on: [push]
+
+jobs:
+  sast_scan1:
+    name: Run Bandit
+    runs_on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+    - name: Install Bandit
+      run: pip install bandit
+    - name: Run Bandit
+      run: bandit -r .
+   
