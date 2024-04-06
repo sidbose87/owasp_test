@@ -17,7 +17,7 @@ jobs:
     - name: Install Bandit
       run: pip install bandit
     - name: Run Bandit
-      run: bandit --severity-level {high,medium} --confidence-level {high} -r .
+      run: bandit -ll -iii -r .
   
   sast_scan_sonar:
     name: Run SonarQube
