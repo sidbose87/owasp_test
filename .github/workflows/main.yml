@@ -17,7 +17,7 @@ jobs:
     - name: Install Bandit
       run: pip install bandit
     - name: Run Bandit
-      run: bandit -ll -iii -r .
+      run: bandit -ll -iii -r . -o bandit_scan_report -f json
   
   sast_scan_sonar:
     name: Run SonarQube
