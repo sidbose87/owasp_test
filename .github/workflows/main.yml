@@ -17,7 +17,12 @@ jobs:
     - name: Install Bandit
       run: pip install bandit
     - name: Run Bandit
-      run: bandit -ll -iii -r . -o bandit_scan_report -f json
+      run: bandit -ll -iii -r . -o bandit_scan_report.json -f json
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: bandit report
+        path: bandit_scan_report.json
   
   sast_scan_sonar:
     name: Run SonarQube
