@@ -54,6 +54,7 @@ jobs:
             #-Dsonar.verbose= # optional, default is false
   Docker_Setup_Scan:
     needs: sast_scan_bandit
+    if: ${{ always() }}
     name: Install Docker
     runs-on: ubuntu-latest
 
