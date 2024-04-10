@@ -82,4 +82,9 @@ jobs:
       with:
         dockerhub-user: ${{ secrets.DOCKER_USERNAME }}
         dockerhub-password: ${{ secrets.DOCKER_TOKEN }}
-        command: quickview,cves
+        command: quickview,cves,recommendations
+        only-severities: critical
+        only-update: true
+        only-fixed: true
+        
+        
