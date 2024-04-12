@@ -93,5 +93,27 @@ jobs:
       with:
         name: Scout Report
         path: scout-report.sarif
+  sast_scan_Snyk:
+    #needs: sast_scan_snyk
+    #if: ${{ always() }}
+    name: snyk scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@master
+    - name: Snyk Scan Python
+      uses: snyk/actions/python-3.10@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --sarif-file-output=snyk_scan.sarif --severity-threshold=critical  
+    - name: Upload Snyk Artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Snyk Report
+        path: snyk_scan.sarif
         
         
