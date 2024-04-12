@@ -87,5 +87,11 @@ jobs:
         only-update: true
         only-fixed: true
         sarif-file: scout-report.sarif
+    - name: Upload Scout Artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Scout Report
+        path: scout-report.sarif
         
         
